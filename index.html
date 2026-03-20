@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby Companion Web</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Baby Companion</p>
+          <h1>把哄睡、记录、清单，收进一个家人能直接用的面板。</h1>
+          <p class="hero-copy">首版先不搞复杂。先把最高频的三件事做顺：睡前播放、成长记录、今日待办。</p>
+        </div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </header>
+
+      <main class="grid">
+        <section class="card" aria-labelledby="sleep-title">
+          <div class="card-head">
+            <div>
+              <p class="section-kicker">Sleep</p>
+              <h2 id="sleep-title">哄睡音乐</h2>
+            </div>
+            <button id="next-track" class="ghost-btn">换一个</button>
+          </div>
+          <div id="sleep-card" class="sleep-card"></div>
+          <div class="preset-row" id="preset-row"></div>
+        </section>
+
+        <section class="card" aria-labelledby="memory-title">
+          <div class="card-head">
+            <div>
+              <p class="section-kicker">Memories</p>
+              <h2 id="memory-title">成长记录</h2>
+            </div>
+            <div class="filter-row" id="memory-filters"></div>
+          </div>
+          <div id="memory-list" class="memory-list"></div>
+        </section>
+
+        <section class="card" aria-labelledby="care-title">
+          <div class="card-head">
+            <div>
+              <p class="section-kicker">Care</p>
+              <h2 id="care-title">今日清单</h2>
+            </div>
+            <span class="badge" id="todo-badge"></span>
+          </div>
+          <div id="todo-list" class="todo-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
