@@ -19,8 +19,14 @@
         <div class="hero-stats" id="hero-stats"></div>
       </header>
 
+      <nav class="mobile-nav" aria-label="主导航">
+        <button class="nav-chip active" data-nav-target="sleep-section" type="button">哄睡</button>
+        <button class="nav-chip" data-nav-target="memory-section" type="button">记录</button>
+        <button class="nav-chip" data-nav-target="care-section" type="button">教育清单</button>
+      </nav>
+
       <main class="dashboard">
-        <section class="card" aria-labelledby="sleep-title">
+        <section id="sleep-section" class="card" aria-labelledby="sleep-title">
           <div class="card-head">
             <div>
               <p class="section-kicker">Sleep</p>
@@ -30,6 +36,14 @@
           </div>
 
           <div id="sleep-card" class="sleep-card"></div>
+
+          <div class="subsection">
+            <div class="subsection-head compact-head">
+              <h3>哄睡场景</h3>
+              <span class="badge" id="sleep-scene-badge"></span>
+            </div>
+            <div class="preset-row" id="scene-row"></div>
+          </div>
 
           <div class="preset-row" id="preset-row"></div>
 
@@ -47,7 +61,7 @@
           </div>
         </section>
 
-        <section class="card" aria-labelledby="memory-title">
+        <section id="memory-section" class="card" aria-labelledby="memory-title">
           <div class="card-head">
             <div>
               <p class="section-kicker">Memories</p>
@@ -81,16 +95,26 @@
             <button class="primary-btn" type="submit">添加记录</button>
           </form>
 
+          <div id="memory-organizer" class="organizer-grid"></div>
+
           <div id="memory-list" class="stack-list"></div>
         </section>
 
-        <section class="card" aria-labelledby="care-title">
+        <section id="care-section" class="card" aria-labelledby="care-title">
           <div class="card-head">
             <div>
               <p class="section-kicker">Care</p>
               <h2 id="care-title">教育 / 成长需求清单</h2>
             </div>
             <div class="filter-row" id="todo-filters"></div>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-head compact-head">
+              <h3>教育方向模板</h3>
+              <span class="badge">一键补齐下周计划</span>
+            </div>
+            <div id="care-templates" class="template-grid"></div>
           </div>
 
           <form id="todo-form" class="inline-form">

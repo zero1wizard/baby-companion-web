@@ -30,6 +30,7 @@ body {
     radial-gradient(circle at top left, rgba(246, 178, 124, 0.32), transparent 30%),
     radial-gradient(circle at top right, rgba(255, 226, 183, 0.45), transparent 34%),
     linear-gradient(180deg, var(--bg), var(--bg-deep));
+  padding-bottom: 96px;
 }
 
 button,
@@ -124,6 +125,41 @@ h1 {
   font-size: 1.5rem;
 }
 
+.mobile-nav {
+  position: sticky;
+  z-index: 20;
+  bottom: 14px;
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 10px;
+  border-radius: 999px;
+  background: rgba(255, 251, 247, 0.92);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  overflow-x: auto;
+}
+
+.nav-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.nav-chip.active {
+  background: var(--accent);
+  color: #fff9f4;
+}
+
 .dashboard {
   display: grid;
   gap: 18px;
@@ -149,16 +185,23 @@ h1 {
 
 .filter-row,
 .preset-row,
-.tags {
+.tags,
+.template-grid,
+.organizer-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
+.compact-head {
+  align-items: center;
+}
+
 .primary-btn,
 .ghost-btn,
 .chip,
-.icon-btn {
+.icon-btn,
+.nav-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +212,8 @@ h1 {
 .primary-btn,
 .ghost-btn,
 .chip,
-.icon-btn {
+.icon-btn,
+.nav-chip {
   cursor: pointer;
 }
 
@@ -183,7 +227,8 @@ h1 {
 .primary-btn:hover,
 .ghost-btn:hover,
 .chip:hover,
-.icon-btn:hover {
+.icon-btn:hover,
+.nav-chip:hover {
   transform: translateY(-1px);
 }
 
@@ -211,7 +256,9 @@ h1 {
 
 .sleep-card,
 .list-item,
-.inline-form {
+.inline-form,
+.template-card,
+.organizer-card {
   background: var(--panel-strong);
   border: 1px solid var(--line);
   border-radius: 22px;
@@ -251,6 +298,20 @@ h1 {
   display: grid;
   gap: 12px;
   padding: 14px;
+}
+
+.template-card,
+.organizer-card {
+  display: grid;
+  gap: 10px;
+  flex: 1 1 220px;
+  min-width: min(100%, 220px);
+  padding: 16px;
+}
+
+.template-card .primary-btn,
+.organizer-card .ghost-btn {
+  width: fit-content;
 }
 
 .inline-form label {
@@ -301,6 +362,10 @@ h1 {
 }
 
 @media (min-width: 760px) {
+  body {
+    padding-bottom: 32px;
+  }
+
   .app-shell {
     padding: 34px 24px 64px;
   }
@@ -316,6 +381,13 @@ h1 {
 
   .stat:last-child {
     grid-column: auto;
+  }
+
+  .mobile-nav {
+    top: 18px;
+    bottom: auto;
+    width: fit-content;
+    margin-left: auto;
   }
 
   .dashboard {
