@@ -15,8 +15,14 @@ for (const file of required) {
 const appJs = await readFile(path.join(root, 'app.js'), 'utf8');
 new vm.Script(appJs, { filename: 'app.js' });
 
+for (const token of ['localStorage', 'memory-form', 'todo-form', 'startSleepSession']) {
+  if (!appJs.includes(token)) {
+    throw new Error(`Missing app token in app.js: ${token}`);
+  }
+}
+
 const html = await readFile(path.join(root, 'index.html'), 'utf8');
-for (const token of ['Sleep', 'Memories', 'Care']) {
+for (const token of ['Sleep', 'Memories', 'Care', 'memory-form', 'todo-form', 'start-session']) {
   if (!html.includes(token)) {
     throw new Error(`Missing section token in index.html: ${token}`);
   }
