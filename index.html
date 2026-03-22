@@ -9,25 +9,42 @@
   <body>
     <div class="app-shell">
       <header class="hero">
-        <div>
+        <div class="hero-copyblock">
           <p class="eyebrow">Baby Companion</p>
-          <h1>把哄睡、记录、清单，收进一个家人能直接用的面板。</h1>
-          <p class="hero-copy">首版先不搞复杂。先把最高频的三件事做顺：睡前播放、成长记录、今日待办。</p>
+          <h1>把哄睡、成长记录和照护清单，整理成一个家人随手就能用的本地面板。</h1>
+          <p class="hero-copy">
+            这一版聚焦可交付 MVP：本地保存、移动端优先、能直接录入今日事项和成长瞬间，不再只是静态演示。
+          </p>
         </div>
         <div class="hero-stats" id="hero-stats"></div>
       </header>
 
-      <main class="grid">
+      <main class="dashboard">
         <section class="card" aria-labelledby="sleep-title">
           <div class="card-head">
             <div>
               <p class="section-kicker">Sleep</p>
-              <h2 id="sleep-title">哄睡音乐</h2>
+              <h2 id="sleep-title">哄睡音乐与入睡流程</h2>
             </div>
-            <button id="next-track" class="ghost-btn">换一个</button>
+            <button id="next-track" class="ghost-btn" type="button">换一首</button>
           </div>
+
           <div id="sleep-card" class="sleep-card"></div>
+
           <div class="preset-row" id="preset-row"></div>
+
+          <div class="sleep-actions">
+            <button id="start-session" class="primary-btn" type="button">开始本次哄睡</button>
+            <button id="finish-session" class="ghost-btn" type="button">标记已入睡</button>
+          </div>
+
+          <div class="subsection">
+            <div class="subsection-head">
+              <h3>最近哄睡记录</h3>
+              <span class="badge" id="sleep-history-badge"></span>
+            </div>
+            <div id="sleep-history" class="stack-list"></div>
+          </div>
         </section>
 
         <section class="card" aria-labelledby="memory-title">
@@ -38,18 +55,69 @@
             </div>
             <div class="filter-row" id="memory-filters"></div>
           </div>
-          <div id="memory-list" class="memory-list"></div>
+
+          <form id="memory-form" class="inline-form">
+            <label>
+              <span>记录类型</span>
+              <select name="type">
+                <option value="照片">照片</option>
+                <option value="视频">视频</option>
+                <option value="照片组">照片组</option>
+                <option value="成长笔记">成长笔记</option>
+              </select>
+            </label>
+            <label>
+              <span>标题</span>
+              <input name="title" type="text" maxlength="40" placeholder="例如：第一次自己拍手" required />
+            </label>
+            <label>
+              <span>摘要</span>
+              <textarea name="summary" rows="3" maxlength="120" placeholder="今天发生了什么，为什么值得记录？" required></textarea>
+            </label>
+            <label>
+              <span>标签</span>
+              <input name="tags" type="text" maxlength="40" placeholder="成长瞬间, 阅读, 客厅" />
+            </label>
+            <button class="primary-btn" type="submit">添加记录</button>
+          </form>
+
+          <div id="memory-list" class="stack-list"></div>
         </section>
 
         <section class="card" aria-labelledby="care-title">
           <div class="card-head">
             <div>
               <p class="section-kicker">Care</p>
-              <h2 id="care-title">今日清单</h2>
+              <h2 id="care-title">教育 / 成长需求清单</h2>
             </div>
-            <span class="badge" id="todo-badge"></span>
+            <div class="filter-row" id="todo-filters"></div>
           </div>
-          <div id="todo-list" class="todo-list"></div>
+
+          <form id="todo-form" class="inline-form">
+            <label>
+              <span>事项</span>
+              <input name="title" type="text" maxlength="60" placeholder="例如：预约体检 or 准备绘本主题" required />
+            </label>
+            <label>
+              <span>截止</span>
+              <input name="due" type="text" maxlength="20" placeholder="今晚 / 周六前 / 4 月 2 日" required />
+            </label>
+            <label>
+              <span>负责人</span>
+              <input name="owner" type="text" maxlength="20" placeholder="妈妈 / 爸爸 / 一起" required />
+            </label>
+            <label>
+              <span>优先级</span>
+              <select name="priority">
+                <option value="high">高</option>
+                <option value="medium" selected>中</option>
+                <option value="low">低</option>
+              </select>
+            </label>
+            <button class="primary-btn" type="submit">添加待办</button>
+          </form>
+
+          <div id="todo-list" class="stack-list"></div>
         </section>
       </main>
     </div>
